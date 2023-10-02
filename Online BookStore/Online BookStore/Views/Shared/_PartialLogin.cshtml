@@ -1,0 +1,33 @@
+﻿
+@using Online_BookStore.Controllers;
+
+@{
+    HomeController home = new HomeController();
+
+    
+}
+
+<ul class="navbar-nav">
+   
+    
+        @if (Session["username"]!=null)
+        {
+        <li class="nav-item">
+            <button class="btn btn-primary"><span>@Html.ActionLink(Session["username"].ToString(), "AccountSettings", "Home", new { @class = "my-class" })</span></button>
+        </li>
+        <li class="nav-item">
+            <button class="btn btn-primary"><span>@Html.ActionLink("LogOut", "LogOut", "Home", new { @class = "my-class" })</span></button>
+        </li>           
+        }
+        else
+        {
+        <li class="nav-item">
+            <button class="btn btn-primary"><span>@Html.ActionLink("Login", "Login", "Home", new { @class = "my-class" })</span></button>
+        </li>
+        <li class="nav-item">
+            <button class="btn btn-primary"><span>@Html.ActionLink("Register", "Register", "Home", new { @class = "my-class" })</span></button>
+        </li>
+
+        }
+    
+</ul>

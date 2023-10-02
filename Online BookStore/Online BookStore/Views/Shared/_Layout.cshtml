@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="stylesheet" href="~/Content/FullSite.css" />
+</head>
+<body>
+    <style>
+    a {
+        color: white;
+        text-decoration: none;
+    }
+
+
+        .adjusborders {
+            width: 50%;
+            font-size: 20px;
+            text-align: center;
+        }
+
+
+</style>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Online_Bookstore</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li><button class="btn btn-primary"><span>@Html.ActionLink("Home", "Index", "Home", new { @class = "my-class" })</span></button></li>
+                        @if (Session["username"] != null && Session["username"].ToString() == "kirollos.adel2000@gmail.com")
+                        {
+                            <li><button class="btn btn-primary"><span>@Html.ActionLink("ViewUsers", "ViewUsers", "Home", new { @class = "my-class" })</span></button></li>
+                            <li><button class="btn btn-primary"><span>@Html.ActionLink("ViewTransaction", "ViewTransaction", "Home", new { @class = "my-class" })</span></button></li>
+                        }
+
+                    <li class="nav-item">
+                        <div class="center">
+                            <input class="adjusborders" type="text" id="Search" name="Search" title="Search" placeholder="Search your book">
+                            <a href="#"><button class="btn btn-primary"><span>Search</span></button></a>
+                        </div>
+                    </li>
+                    </ul>
+
+                    @Html.Partial("_PartialLogin")
+
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2021 - Online_Bookstore 
+        </div>
+    </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,26 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+<style>
+    a.index {
+        color: white;
+        text-decoration: none;
+    }
+</style>
+
+<div class="text-center">
+    <h4>Welcome to the Online Bookstore</h4>
+</div>
+@if (Session["username"] != null)
+{
+<div class="divL">
+    <h1 class="display-4"></h1>
+    <button class="button1"><span>@Html.ActionLink("Add New Book", "AddNewBook", "Home")</span></button>
+    <a class="index" href="#"><button class="button1"><span>Remove existing Book</span></button></a> <br>
+    <a class="index" href="#"><button class="button1"><span>View Your Cart</span></button></a> <br>
+    <button class="button1"><span>@Html.ActionLink("ViewBooks", "ViewBooks", "Home", new { @class = "index" })</span></button>
+    <h1 class="display-4"></h1>
+</div>
+
+}
+
